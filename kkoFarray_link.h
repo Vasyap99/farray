@@ -9,6 +9,9 @@
 namespace kko{	
 class Farray;
 }
+
+#include "kkoSemaphore.h"
+
 //#include "kkoFarray.h"
 //namespace kko{
 
@@ -16,10 +19,15 @@ class Farray;
 	class farray_link{
 	public:
 		kko::Farray *fa;
-		farray_link(kko::Farray*fa1);
-		//farray_link& operator=(farray_link&fa);
-		farray_link& operator=(int i);
-		operator int() const;
+		int index;
+		farray_link(kko::Farray*fa1,int index);
+		farray_link(farray_link &&fl){  //считаем, что генерируется автоматически
+			fa=fl.fa;
+			index=fl.index;
+		}
+		farray_link& operator=(const farray_link&fl);
+		farray_link&& operator=(int i);
+		operator int();
 	};
 	
 //}

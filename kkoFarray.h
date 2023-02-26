@@ -2,6 +2,7 @@
 
 #include <string>
 #include <cstdlib>
+#include <vector>
 
 	using namespace std;
 
@@ -10,15 +11,16 @@
 namespace kko{
 
 class Farray{
-	public:
+		//vector<farray_link> v;
+	public:		
 		FILE *f;
-		farray_link fl;
+		Semaphore s;
 	public:
 		Farray(string fn);
 		~Farray();
 
-	    int operator[](int index) const;
-	    farray_link& operator[](int index);
+	    //int operator[](int index) const;
+	    farray_link operator[](int index);
 };
 
 }
